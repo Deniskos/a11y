@@ -1,43 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <link href="./src/css/styles.css" rel="stylesheet">
+    <script type="text/javascript" src="./src/js/scripts.js"></script>
+    <title>Музей имени А.С.Пушкина</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root">a11y</div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <div class="wrapper">
+      <a id="skip-link_main" href="#main" aria-labelledby="main-content-title">
+        <span class="v-h" id="main-content-title">Перейти к основному контенту</span>
+      </a>
+      <div role="banner" class="header">
+        <h1 class="logo" aria-labelledby="logo-title" tabindex="0">
+          <span class="v-h" id="logo-title">Государственный музей изобразительных искусств имени А.С.Пушкина</span>
+        </h1>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+        <div class="header-controls">
+          <div role="search" class="search-area">
+            <input type="search" role="searchbox" aria-label="Введите текст, чтобы начать поиск" type="text" class="search" name="">
+            <button class="search-btn" aria-label="Начать поиск"></button>
+          </div>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+          <div class="languages" aria-label="Выбор языка" tabindex="0">
+            <a role="button" aria-label="Русский" href="#" aria-label="" class="lang-btn active">RU</a>
+            <a role="button" aria-label="English" href="#" class="lang-btn">EN</a>
+          </div>
+
+          <button class="authorization" type="button" aria-label="Личный кабинет"></button>
+        </div>
+      </div>
+
+      <div role="menu" id="menu" class="scrollto">
+        <a href="#exhibition" role="menuitem">Выставки и события</a>
+        <a href="#museum" role="menuitem">Музей</a>
+        <a href="#broadcasts" role="menuitem">Онлайн-трансляции</a>
+        <a href="#excursion" role="menuitem">Экскурсии и лекции</a>
+      </div>
+
+      <div role="main" id="main" tabindex="0">
+        <section id="exhibition" tabindex="0">
+          <h2>Выставки и события</h2>
+
+          <div class="nav-tabs">
+            <a href="#" data-tab="1" class="nav-tab active">Tab 1</a>
+            <a href="#" data-tab="2" class="nav-tab">Tab 2</a>
+            <a href="#" data-tab="3" class="nav-tab">Tab 3</a>
+          </div>
+          <div class="tab-content">
+            <div data-tab-content="1" class="tab-pane active">
+              Tab content 1
+            </div>
+            <div data-tab-content="2" class="tab-pane">
+              Tab content 2
+            </div>
+            <div data-tab-content="3" class="tab-pane">
+              Tab content 3
+            </div>
+          </div>
+
+        </section>
+        <section id="museum" tabindex="0">
+          <h2 role="heading" aria-level="2">Музей</h2>
+        </section>
+        <section id="broadcasts" tabindex="0">
+          <h2 role="heading" aria-level="2">Онлайн-трансляции</h2>
+        </section>
+        <section id="excursion" tabindex="0">
+          <h2 role="heading" aria-level="2">Экскурсии и лекции в прямом эфире</h2>
+        </section>
+      </div>
+
+      <div role="contentinfo" aria-label="Footer">Футер</div>
+    </div>
   </body>
 </html>
