@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="./src/css/styles.css" rel="stylesheet">
+    <script src="https://unpkg.com/element-closest"></script>
     <script type="text/javascript" src="./src/js/scripts.js"></script>
     <title>Музей имени А.С.Пушкина</title>
   </head>
@@ -24,15 +25,18 @@
           </div>
 
           <div class="languages" aria-label="Выбор языка" tabindex="0">
-            <a role="button" aria-label="Русский" href="#" aria-label="" class="lang-btn active">RU</a>
+            <a role="button" aria-label="Русский" href="#" aria-label="" va class="lang-btn active">RU</a>
             <a role="button" aria-label="English" href="#" class="lang-btn">EN</a>
           </div>
 
-          <button class="authorization" type="button" aria-label="Личный кабинет"></button>
+          <button class="authorization js-open-auth-modal"
+                  data-modal="1"
+                  type="button"
+                  aria-label="Личный кабинет"></button>
         </div>
       </div>
 
-      <div role="menu" id="menu" class="scrollto">
+      <div role="menu" class="nav-menu js-scroll-menu">
         <a href="#exhibition" role="menuitem">Выставки и события</a>
         <a href="#museum" role="menuitem">Музей</a>
         <a href="#broadcasts" role="menuitem">Онлайн-трансляции</a>
@@ -40,23 +44,96 @@
       </div>
 
       <div role="main" id="main" tabindex="0">
+        <div class="slider"></div>
+
+        <div class="actions-button-area" role="group">
+          <button type="button" class="button">Купить билет</button>
+          <button type="button" class="button">Стать другом</button>
+          <button type="button" class="button">Онлайн-магазин</button>
+        </div>
+
         <section id="exhibition" tabindex="0">
           <h2>Выставки и события</h2>
 
           <div class="nav-tabs">
-            <a href="#" data-tab="1" class="nav-tab active">Tab 1</a>
-            <a href="#" data-tab="2" class="nav-tab">Tab 2</a>
-            <a href="#" data-tab="3" class="nav-tab">Tab 3</a>
+            <a href="#" data-tab="1-1" class="nav-tab active">Все</a>
+            <a href="#" data-tab="1-2" class="nav-tab">Сегодня</a>
+            <a href="#" data-tab="1-3" class="nav-tab">Завтра</a>
           </div>
+
           <div class="tab-content">
-            <div data-tab-content="1" class="tab-pane active">
-              Tab content 1
+            <div data-tab-content="1-1" class="tab-pane active">
+
+              <div class="tab-pane__item">
+                <img src="./src/images/tab-1.png" alt="">
+                <h3>Святослав Рихтер в кругу друзей. Москва — Коктебель</h3>
+                <h4>Выставка до 20 ноября</h4>
+                <div class="tab__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</div>
+                <button class="tab__button">Купить билет</button>
+              </div>
+
+              <div class="tab-pane__item">
+                <img src="./src/images/tab-2.png" alt="">
+                <h3>Тату</h3>
+                <h4>Выставка до 27 сентября</h4>
+                <div class="tab__text">ТТекст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</div>
+                <button class="tab__button">Купить билет</button>
+              </div>
+
+              <div class="tab-pane__item">
+                <img src="./src/images/tab-3.png" alt="">
+                <h3>От Дюрера до Матисса. Избранные рисунки из собрания ГМИИ им. А.С. Пушкина</h3>
+                <h4>Выставка до 1 ноября</h4>
+                <div class="tab__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</div>
+                <button class="tab__button">Купить билет</button>
+              </div>
+
             </div>
-            <div data-tab-content="2" class="tab-pane">
-              Tab content 2
+            <div data-tab-content="1-2" class="tab-pane">
+              <div class="tab-pane__item">
+                <img src="./src/images/tab-2.png" alt="">
+                <h3>Тату</h3>
+                <h4>Выставка до 27 сентября</h4>
+                <div class="tab__text">ТТекст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</div>
+                <button class="tab__button">Купить билет</button>
+              </div>
+              <div class="tab-pane__item">
+                <img src="./src/images/tab-1.png" alt="">
+                <h3>Святослав Рихтер в кругу друзей. Москва — Коктебель</h3>
+                <h4>Выставка до 20 ноября</h4>
+                <div class="tab__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</div>
+                <button class="tab__button">Купить билет</button>
+              </div>
+              <div class="tab-pane__item">
+                <img src="./src/images/tab-3.png" alt="">
+                <h3>От Дюрера до Матисса. Избранные рисунки из собрания ГМИИ им. А.С. Пушкина</h3>
+                <h4>Выставка до 1 ноября</h4>
+                <div class="tab__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</div>
+                <button class="tab__button">Купить билет</button>
+              </div>
             </div>
-            <div data-tab-content="3" class="tab-pane">
-              Tab content 3
+            <div data-tab-content="1-3" class="tab-pane">
+              <div class="tab-pane__item">
+                <img src="./src/images/tab-2.png" alt="">
+                <h3>Тату</h3>
+                <h4>Выставка до 27 сентября</h4>
+                <div class="tab__text">ТТекст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</div>
+                <button class="tab__button">Купить билет</button>
+              </div>
+              <div class="tab-pane__item">
+                <img src="./src/images/tab-3.png" alt="">
+                <h3>От Дюрера до Матисса. Избранные рисунки из собрания ГМИИ им. А.С. Пушкина</h3>
+                <h4>Выставка до 1 ноября</h4>
+                <div class="tab__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</div>
+                <button class="tab__button">Купить билет</button>
+              </div>
+              <div class="tab-pane__item">
+                <img src="./src/images/tab-1.png" alt="">
+                <h3>Святослав Рихтер в кругу друзей. Москва — Коктебель</h3>
+                <h4>Выставка до 20 ноября</h4>
+                <div class="tab__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</div>
+                <button class="tab__button">Купить билет</button>
+              </div>
             </div>
           </div>
 
@@ -72,7 +149,28 @@
         </section>
       </div>
 
-      <div role="contentinfo" aria-label="Footer">Футер</div>
+      <div role="contentinfo" aria-label="Footer" class="footer">Футер</div>
+
+
+
+      <div class="modal" data-modal="1" tabindex="-1">
+        <!--   Svg иконка для закрытия окна  -->
+        <svg class="modal__cross js-modal-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg>
+        <h3 class="modal__title">Вход</h3>
+
+        <form action="#">
+<!--            <label for="login"><b>Username</b></label>-->
+            <input class="js-login-form" tabindex="-1" type="text" placeholder="Логин" name="login" required>
+<!--            <label for="psw"><b>Password</b></label>-->
+            <input type="password" placeholder="Пароль" name="psw" required>
+
+            <button type="submit">Вход</button>
+        </form>
+
+      </div>
+
+      <!-- Подложка под модальным окном -->
+      <div class="overlay" id="overlay-modal"></div>
     </div>
   </body>
 </html>
