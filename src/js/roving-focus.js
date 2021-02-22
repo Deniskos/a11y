@@ -3,9 +3,9 @@
 
     // Define values for keycodes
     var VK_LEFT = 37;
-    // var VK_UP = 38;
+    var VK_UP = 38;
     var VK_RIGHT = 39;
-    // var VK_DOWN = 40;
+    var VK_DOWN = 40;
 
     // Helper function to convert NodeLists to Arrays
     function slice(nodes) {
@@ -24,7 +24,7 @@
 
     RadioGroup.prototype.handleKeyDown = function(e) {
         switch(e.keyCode) {
-            // case VK_UP:
+            case VK_UP:
             case VK_LEFT: {
                 e.preventDefault();
 
@@ -36,7 +36,7 @@
                 break;
             }
 
-            // case VK_DOWN:
+            case VK_DOWN:
             case VK_RIGHT: {
                 e.preventDefault();
 

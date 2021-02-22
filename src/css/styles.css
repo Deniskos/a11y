@@ -23,6 +23,10 @@ body {
 section {
     padding-bottom: 50px;
 }
+section:focus,
+#main:focus {
+    outline: none;
+}
 h2 {
     margin-bottom: 40px;
     font-size: 50px;
