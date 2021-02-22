@@ -190,11 +190,11 @@ p {
 .nav-tab{
     font-size: 22px;
     line-height: 26px;
-    margin-right: 63px;
+    margin-right: 0;
+    padding: 17px 62px 15px;
     color: #000;
 }
 .nav-tab.active{
-    padding: 17px 62px 15px;
     background: #C7D2E9;
     border-radius: 8px;
     text-decoration: none;
