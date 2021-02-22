@@ -11,8 +11,8 @@
   <body>
     <div class="page-wrapper">
       <div class="main-wrap">
-        <a id="skip-link_main" href="#main" aria-labelledby="main-content-title">
-          <span class="v-h" id="main-content-title">Перейти к основному контенту</span>
+        <a id="skip-link_main" href="#main" aria-labelledby="skip-to-main">
+          <span id="skip-to-main">Перейти к основному контенту</span>
         </a>
         <div role="banner" class="header">
           <h1 class="logo" aria-labelledby="logo-title" tabindex="0">
@@ -25,10 +25,13 @@
               <button class="search-btn" aria-label="Начать поиск"></button>
             </div>
 
-            <div role="group" class="languages" aria-label="Выбор языка" tabindex="0">
-              <a role="button" aria-label="Русский" href="#" class="lang-btn active">RU</a>
-              <a role="button" aria-label="English" href="#" class="lang-btn">EN</a>
-            </div>
+            <nav class="languages" aria-label="Выбор языка">
+              <span class="lang-btn active">
+                <span aria-hidden="true">RU</span>
+                <span class="v-h">Русский</span>
+              </span>
+              <a aria-label="English" role="button" href="#" class="lang-btn">EN</a>
+            </nav>
 
             <button class="authorization js-open-auth-modal"
                     data-modal="1"
@@ -276,8 +279,8 @@
     <!--<span class="modal__close js-modal-close"></span>-->
         <h2 id="modalHeadingId" class="modal__title">Вход</h2>
         <form id="modalForm" action="#" method="post">
-<!--            <label for="login"><b>Username</b></label>-->
-            <input class="js-login-form" type="text" placeholder="Логин" name="login" required>
+            <label for="login"><b>Введите логин латинскими буквами</b></label>
+            <input class="js-login-form" type="text" placeholder="Логин" name="login" pattern="^[a-zA-Z\s]+$" required>
 <!--            <label for="psw"><b>Password</b></label>-->
             <input type="password" placeholder="Пароль" name="psw" required>
 

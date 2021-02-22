@@ -6,8 +6,8 @@ window.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             let href = this.getAttribute('href').substring(1);
             const scrollTarget = document.getElementById(href);
-            const topOffset = document.querySelector('.js-scroll-menu').offsetHeight;
-            // const topOffset = 0; // если не нужен отступ сверху
+            // const topOffset = document.querySelector('.js-scroll-menu').offsetHeight;
+            const topOffset = 0; // если не нужен отступ сверху
             const elementPosition = scrollTarget.getBoundingClientRect().top;
             const offsetPosition = elementPosition - topOffset;
 
@@ -141,6 +141,5 @@ window.addEventListener('DOMContentLoaded', () => {
             closeButton.dispatchEvent(clickEvent);
         }
     };
-
 
 });
