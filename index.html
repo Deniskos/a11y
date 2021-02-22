@@ -1,291 +1,332 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="./src/css/styles.css" rel="stylesheet">
     <script src="https://unpkg.com/element-closest"></script>
     <script type="text/javascript" src="./src/js/scripts.js"></script>
     <title>Музей имени А.С.Пушкина</title>
-  </head>
-  <body>
-    <div class="page-wrapper">
-      <div class="main-wrap">
+</head>
+<body>
+<div class="page-wrapper">
+    <div class="main-wrap">
         <a id="skip-link_main" href="#main" aria-labelledby="skip-to-main">
-          <span id="skip-to-main">Перейти к основному контенту</span>
+            <span id="skip-to-main">Перейти к основному контенту</span>
         </a>
         <div role="banner" class="header">
-          <h1 class="logo" aria-labelledby="logo-title" tabindex="0">
-            <span class="v-h" id="logo-title">Государственный музей изобразительных искусств имени А.С.Пушкина</span>
-          </h1>
+            <h1 class="logo" aria-labelledby="logo-title" tabindex="0">
+                <span class="v-h"
+                      id="logo-title">Государственный музей изобразительных искусств имени А.С.Пушкина</span>
+            </h1>
 
-          <div class="header-controls">
-            <div role="search" class="search-area">
-              <input type="search" role="searchbox" aria-label="Введите текст, чтобы начать поиск" type="text" class="search" name="">
-              <button class="search-btn" aria-label="Начать поиск"></button>
-            </div>
+            <div class="header-controls">
+                <div role="search" class="search-area">
+                    <input type="search" role="searchbox" aria-label="Введите текст, чтобы начать поиск" type="text"
+                           class="search" name="">
+                    <button class="search-btn" aria-label="Начать поиск"></button>
+                </div>
 
-            <nav class="languages" aria-label="Выбор языка">
+                <nav class="languages" aria-label="Выбор языка">
               <span class="lang-btn active">
                 <span aria-hidden="true">RU</span>
                 <span class="v-h">Русский</span>
               </span>
-              <a aria-label="English" role="button" href="#" class="lang-btn">EN</a>
-            </nav>
+                    <a aria-label="English" role="button" href="#" class="lang-btn">EN</a>
+                </nav>
 
-            <button class="authorization js-open-auth-modal"
-                    data-modal="1"
-                    aria-haspopup="dialog"
-                    aria-label="Личный кабинет"></button>
-          </div>
+                <button class="authorization js-open-auth-modal"
+                        data-modal="1"
+                        aria-haspopup="dialog"
+                        aria-label="Личный кабинет"></button>
+            </div>
         </div>
         <div role="menu" class="nav-menu js-scroll-menu">
-          <a href="#exhibition" role="menuitem">Выставки и события</a>
-          <a href="#museum" role="menuitem">Музей</a>
-          <a href="#broadcasts" role="menuitem">Онлайн-трансляции</a>
-          <a href="#excursion" role="menuitem">Экскурсии и лекции</a>
+            <a href="#exhibition" role="menuitem">Выставки и события</a>
+            <a href="#museum" role="menuitem">Музей</a>
+            <a href="#broadcasts" role="menuitem">Онлайн-трансляции</a>
+            <a href="#excursion" role="menuitem">Экскурсии и лекции</a>
         </div>
         <div role="main" id="main" tabindex="0">
-        <div class="slider"></div>
+            <div class="slider"></div>
 
-        <div class="actions-button-area" role="group">
-          <button role="button" class="button">Купить билет</button>
-          <button role="button" class="button">Стать другом</button>
-          <button role="button" class="button">Онлайн-магазин</button>
+            <div class="actions-button-area" role="group">
+                <button role="button" class="button">Купить билет</button>
+                <button role="button" class="button">Стать другом</button>
+                <button role="button" class="button">Онлайн-магазин</button>
+            </div>
+
+            <section id="exhibition" tabindex="0" aria-labelledby="exhibitionTitle">
+                <h2 id="exhibitionTitle">Выставки и события</h2>
+
+                <div id="tablist-1" role="tablist" class="nav-tabs">
+                    <button id="heading1-1" role="tab"
+                            aria-controls="tabpanel1-1"
+                            href="#" data-tab="1-1"
+                            class="nav-tab active"
+                            tabindex="0"
+                            aria-selected="true">
+                        Все
+                    </button>
+                    <button id="heading1-2" role="tab"
+                            aria-controls="tabpanel1-2"
+                            href="#" data-tab="1-2"
+                            class="nav-tab"
+                            tabindex="-1"
+                            aria-selected="false">
+                        Сегодня
+                    </button>
+                    <button id="heading1-3" role="tab"
+                            aria-controls="tabpanel1-3"
+                            href="#" data-tab="1-3"
+                            class="nav-tab"
+                            tabindex="-1"
+                            aria-selected="false">
+                        Завтра
+                    </button>
+                </div>
+
+                <section id="tabpanel1-1"
+                         role="tabpanel"
+                         data-tab-content="1-1"
+                         class="tab-pane active"
+                         aria-labelledby="heading1-1">
+                    <div class="tab-pane__item" tabindex="0">
+                        <img src="./src/images/tab-1.png" alt="Женщина в чепчике с зонтом в руках, акварель">
+                        <h3>Святослав Рихтер в кругу друзей. Москва — Коктебель</h3>
+                        <h4>Выставка до 20 ноября</h4>
+                        <div class="tab__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее
+                            текст
+                        </div>
+                        <button class="tab__button">Купить билет</button>
+                    </div>
+                    <div class="tab-pane__item" tabindex="0">
+                        <img src="./src/images/tab-2.png" alt="Деревянная маска в майанском стиле">
+                        <h3>Тату</h3>
+                        <h4>Выставка до 27 сентября</h4>
+                        <div class="tab__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее
+                            текст
+                        </div>
+                        <button class="tab__button">Купить билет</button>
+                    </div>
+                    <div class="tab-pane__item" tabindex="0">
+                        <img src="./src/images/tab-3.png" alt="Девушка в полосатой блузке, графика">
+                        <h3>От Дюрера до Матисса. Избранные рисунки из собрания ГМИИ им. А.С. Пушкина</h3>
+                        <h4>Выставка до 1 ноября</h4>
+                        <div class="tab__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее
+                            текст
+                        </div>
+                        <button class="tab__button">Купить билет</button>
+                    </div>
+                </section>
+
+                <section id="tabpanel1-2"
+                         role="tabpanel"
+                         data-tab-content="1-2"
+                         class="tab-pane"
+                         aria-labelledby="heading1-2">
+                    <div class="tab-pane__item" tabindex="0">
+                        <img src="./src/images/tab-2.png" alt="Деревянная маска в майанском стиле">
+                        <h3>Тату</h3>
+                        <h4>Выставка до 27 сентября</h4>
+                        <div class="tab__text">ТТекст о музее текст Текст о музее текст Текст о музее текст Текст о
+                            музее текст
+                        </div>
+                        <button class="tab__button">Купить билет</button>
+                    </div>
+                    <div class="tab-pane__item" tabindex="0">
+                        <img src="./src/images/tab-1.png" alt="Женщина в чепчике с зонтом в руках, акварель">
+                        <h3>Святослав Рихтер в кругу друзей. Москва — Коктебель</h3>
+                        <h4>Выставка до 20 ноября</h4>
+                        <div class="tab__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее
+                            текст
+                        </div>
+                        <button class="tab__button">Купить билет</button>
+                    </div>
+                    <div class="tab-pane__item" tabindex="0">
+                        <img src="./src/images/tab-3.png" alt="Девушка в полосатой блузке, графика">
+                        <h3>От Дюрера до Матисса. Избранные рисунки из собрания ГМИИ им. А.С. Пушкина</h3>
+                        <h4>Выставка до 1 ноября</h4>
+                        <div class="tab__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее
+                            текст
+                        </div>
+                        <button class="tab__button">Купить билет</button>
+                    </div>
+                </section>
+
+                <section id="tabpanel1-3"
+                         role="tabpanel"
+                         data-tab-content="1-3"
+                         class="tab-pane"
+                         aria-labelledby="heading1-3">
+                    <div class="tab-pane__item" tabindex="0">
+                        <img src="./src/images/tab-2.png" alt="Деревянная маска в майанском стиле">
+                        <h3>Тату</h3>
+                        <h4>Выставка до 27 сентября</h4>
+                        <div class="tab__text">ТТекст о музее текст Текст о музее текст Текст о музее текст Текст о
+                            музее текст
+                        </div>
+                        <button class="tab__button">Купить билет</button>
+                    </div>
+                    <div class="tab-pane__item" tabindex="0">
+                        <img src="./src/images/tab-3.png" alt="Девушка в полосатой блузке, графика">
+                        <h3>От Дюрера до Матисса. Избранные рисунки из собрания ГМИИ им. А.С. Пушкина</h3>
+                        <h4>Выставка до 1 ноября</h4>
+                        <div class="tab__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее
+                            текст
+                        </div>
+                        <button class="tab__button">Купить билет</button>
+                    </div>
+                    <div class="tab-pane__item" tabindex="0">
+                        <img src="./src/images/tab-1.png" alt="Женщина в чепчике с зонтом в руках, акварель">
+                        <h3>Святослав Рихтер в кругу друзей. Москва — Коктебель</h3>
+                        <h4>Выставка до 20 ноября</h4>
+                        <div class="tab__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее
+                            текст
+                        </div>
+                        <button class="tab__button">Купить билет</button>
+                    </div>
+                </section>
+            </section>
+
+            <section id="museum" tabindex="0">
+                <h2 role="heading" aria-level="2">Музей</h2>
+
+                <div id="tablist-2" role="tablist" class="nav-tabs">
+                    <button id="heading2-1" role="tab"
+                            aria-controls="tabpanel2-1"
+                            href="#" data-tab="2-1"
+                            class="nav-tab active"
+                            tabindex="0"
+                            aria-selected="true">
+                        Здания
+                    </button>
+                    <button id="heading2-2" role="tab"
+                            aria-controls="tabpanel2-2"
+                            href="#" data-tab="2-2"
+                            class="nav-tab"
+                            tabindex="-1"
+                            aria-selected="false">
+                        История
+                    </button>
+                </div>
+
+                <!--          <div class="tab-content">-->
+                <section id="tabpanel2-1"
+                         role="tabpanel"
+                         data-tab-content="2-1"
+                         class="tab-pane active"
+                         aria-labelledby="heading2-1">
+                    <div class="tab-pane__item" tabindex="0">
+                        <img src="./src/images/Rectangle_1.png" alt="">
+                        <h3>МЕМОРИАЛЬНАЯ КВАРТИРА С.Т. РИХТЕРА</h3>
+                        <div class="tab__text">Тул. Большая Бронная, 2/6, 16 этаж, кв. 58</div>
+                        <button class="tab__button">Подробнее</button>
+                    </div>
+
+                    <div class="tab-pane__item" tabindex="0">
+                        <img src="./src/images/Rectangle_2.png" alt="">
+                        <h3>ЦЭВ «МУСЕЙОН»</h3>
+                        <div class="tab__text">Колымажный пер., 6/2, 3 (вход с Малого Знаменского переулка)</div>
+                        <button class="tab__button">Подробнее</button>
+                    </div>
+
+                    <div class="tab-pane__item" tabindex="0">
+                        <img src="./src/images/Rectangle_3.png" alt="">
+                        <h3>УСАДЬБА ЛОПУХИНЫХ</h3>
+                        <div class="tab__text">Малый Знаменский пер., 3/5с4</div>
+                        <button class="tab__button">Подробнее</button>
+                    </div>
+
+                    <div class="tab-pane__item" tabindex="0">
+                        <img src="./src/images/Rectangle_4.png" alt="">
+                        <h3>УЧЕБНЫЙ МУЗЕЙ</h3>
+                        <div class="tab__text">ул. Чаянова, 15</div>
+                        <button class="tab__button">Подробнее</button>
+                    </div>
+
+                    <div class="tab-pane__item" tabindex="0">
+                        <img src="./src/images/Rectangle_5.png" alt="">
+                        <h3>ОТДЕЛ ЛИЧНЫХ КОЛЛЕКЦИЙ</h3>
+                        <div class="tab__text">ул. Волхонка, 10</div>
+                        <button class="tab__button">Подробнее</button>
+                    </div>
+
+                    <div class="tab-pane__item" tabindex="0">
+                        <img src="./src/images/Rectangle_6.png" alt="">
+                        <h3>ГАЛЕРЕЯ</h3>
+                        <div class="tab__text">ул. Волхонка, 14</div>
+                        <button class="tab__button">Подробнее</button>
+                    </div>
+                </section>
+
+                <section id="tabpanel2-2"
+                         role="tabpanel"
+                         data-tab-content="2-2"
+                         class="tab-pane"
+                         aria-labelledby="heading2-2"
+                         tabindex="-1">
+                    <div class="tab-pane__item col-12" tabindex="0">
+                        <p>Государственный музей изобразительных искусств имени А.С. Пушкина – одно из крупнейших в
+                            России художественных собраний зарубежного искусства с древнейших времен до наших дней.</p>
+                        <p>В современной экспозиции представлены обширная учебная коллекция тонированных гипсовых
+                            слепков с произведений Античности, Средних веков и эпохи Возрождения, а также собрание
+                            подлинных произведений живописи, скульптуры, графики и декоративно-прикладного
+                            искусства.</p>
+                        <p>В залах первого этажа Главного здания представлены: произведения искусства Древнего Египта,
+                            Античности, собрание европейской живописи VIII–XVIII веков; два зала – Итальянский и
+                            Греческий дворики – занимают слепки. На втором этаже Главного здания в залах размещены
+                            слепки произведений искусства Древней Греции, Рима, Средних веков и Возрождения.</p>
+                        <p>В начале 2017 года музей определил новое направление своей деятельности – Пушкинский XXI, –
+                            ориентированное на современное российское и западное искусство во всех аспектах –
+                            выставочном, образовательном и исследовательском. Таким образом, ГМИИ им. А.С. Пушкина
+                            представляет собой открытую, интерактивную сцену, демонстрирующую развитие мировой культуры
+                            с древности до наших дней, живое, знакомое с детства пространство для получения знаний и
+                            общения.</p>
+                        <button class="tab__button read-more-btn">Читать далее</button>
+                    </div>
+                </section>
+            </section>
+
+            <section id="broadcasts" tabindex="0">
+                <h2>Онлайн-трансляции</h2>
+                <div class="video">
+                    <img src="./src/images/preview.png" tabindex="0"
+                         alt="Картинка-заглушка к видеоролику Екатерины Кочетковой '20 коротких историй о современном искусстве'. На изображении семечки подсолничника крупным планом">
+                </div>
+            </section>
+            <section id="excursion" tabindex="0">
+                <h2 role="heading" aria-level="2">Экскурсии и лекции в прямом эфире</h2>
+                <p>С 1 июля вы можете присоединиться к нашим виртуальным мероприятиям — экскурсиям и лекциям для
+                    взрослых и детей, оплатив участие на сайте. Встречи будут проходить в прямом эфире на платформе
+                    Zoom; предусмотрен формат живого общения с возможностью задавать вопросы экскурсоводу (лектору).
+                    Подробнее.</p>
+                <p>Мы будем благодарны за любое пожертвование. Все поступившие средства будут направлены на организацию
+                    онлайн-проектов для наших посетителей.</p>
+            </section>
         </div>
 
-        <section id="exhibition" tabindex="0" aria-labelledby="exhibitionTitle">
-          <h2 id="exhibitionTitle">Выставки и события</h2>
-
-          <div id="tablist-1" role="tablist" class="nav-tabs">
-            <button id="heading1-1" role="tab"
-                    aria-controls="tabpanel1-1"
-                    href="#" data-tab="1-1"
-                    class="nav-tab active"
-                    tabindex="0"
-                    aria-selected="true">
-              Все</button>
-            <button id="heading1-2" role="tab"
-                    aria-controls="tabpanel1-2"
-                    href="#" data-tab="1-2"
-                    class="nav-tab"
-                    tabindex="-1"
-                    aria-selected="false">
-              Сегодня</button>
-            <button id="heading1-3" role="tab"
-                    aria-controls="tabpanel1-3"
-                    href="#" data-tab="1-3"
-                    class="nav-tab"
-                    tabindex="-1"
-                    aria-selected="false">
-              Завтра</button>
-          </div>
-
-          <section id="tabpanel1-1"
-                   role="tabpanel"
-                   data-tab-content="1-1"
-                   class="tab-pane active"
-                   aria-labelledby="heading1-1">
-            <div class="tab-pane__item" tabindex="0">
-              <img src="./src/images/tab-1.png" alt="Женщина в чепчике с зонтом в руках, акварель">
-              <h3>Святослав Рихтер в кругу друзей. Москва — Коктебель</h3>
-              <h4>Выставка до 20 ноября</h4>
-              <div class="tab__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</div>
-              <button class="tab__button">Купить билет</button>
-            </div>
-            <div class="tab-pane__item" tabindex="0">
-              <img src="./src/images/tab-2.png" alt="Деревянная маска в майанском стиле">
-              <h3>Тату</h3>
-              <h4>Выставка до 27 сентября</h4>
-              <div class="tab__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</div>
-              <button class="tab__button">Купить билет</button>
-            </div>
-            <div class="tab-pane__item" tabindex="0">
-              <img src="./src/images/tab-3.png" alt="Девушка в полосатой блузке, графика">
-              <h3>От Дюрера до Матисса. Избранные рисунки из собрания ГМИИ им. А.С. Пушкина</h3>
-              <h4>Выставка до 1 ноября</h4>
-              <div class="tab__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</div>
-              <button class="tab__button">Купить билет</button>
-            </div>
-          </section>
-
-          <section id="tabpanel1-2"
-                   role="tabpanel"
-                   data-tab-content="1-2"
-                   class="tab-pane"
-                   aria-labelledby="heading1-2">
-            <div class="tab-pane__item" tabindex="0">
-              <img src="./src/images/tab-2.png" alt="Деревянная маска в майанском стиле">
-              <h3>Тату</h3>
-              <h4>Выставка до 27 сентября</h4>
-              <div class="tab__text">ТТекст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</div>
-              <button class="tab__button">Купить билет</button>
-            </div>
-            <div class="tab-pane__item" tabindex="0">
-              <img src="./src/images/tab-1.png" alt="Женщина в чепчике с зонтом в руках, акварель">
-              <h3>Святослав Рихтер в кругу друзей. Москва — Коктебель</h3>
-              <h4>Выставка до 20 ноября</h4>
-              <div class="tab__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</div>
-              <button class="tab__button">Купить билет</button>
-            </div>
-            <div class="tab-pane__item" tabindex="0">
-              <img src="./src/images/tab-3.png" alt="Девушка в полосатой блузке, графика">
-              <h3>От Дюрера до Матисса. Избранные рисунки из собрания ГМИИ им. А.С. Пушкина</h3>
-              <h4>Выставка до 1 ноября</h4>
-              <div class="tab__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</div>
-              <button class="tab__button">Купить билет</button>
-            </div>
-            </section>
-
-          <section id="tabpanel1-3"
-                   role="tabpanel"
-                   data-tab-content="1-3"
-                   class="tab-pane"
-                   aria-labelledby="heading1-3">
-            <div class="tab-pane__item" tabindex="0">
-              <img src="./src/images/tab-2.png" alt="Деревянная маска в майанском стиле">
-              <h3>Тату</h3>
-              <h4>Выставка до 27 сентября</h4>
-              <div class="tab__text">ТТекст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</div>
-              <button class="tab__button">Купить билет</button>
-            </div>
-            <div class="tab-pane__item" tabindex="0">
-              <img src="./src/images/tab-3.png" alt="Девушка в полосатой блузке, графика">
-              <h3>От Дюрера до Матисса. Избранные рисунки из собрания ГМИИ им. А.С. Пушкина</h3>
-              <h4>Выставка до 1 ноября</h4>
-              <div class="tab__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</div>
-              <button class="tab__button">Купить билет</button>
-            </div>
-            <div class="tab-pane__item" tabindex="0">
-              <img src="./src/images/tab-1.png" alt="Женщина в чепчике с зонтом в руках, акварель">
-              <h3>Святослав Рихтер в кругу друзей. Москва — Коктебель</h3>
-              <h4>Выставка до 20 ноября</h4>
-              <div class="tab__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</div>
-              <button class="tab__button">Купить билет</button>
-            </div>
-          </section>
-        </section>
-
-        <section id="museum" tabindex="0">
-          <h2 role="heading" aria-level="2">Музей</h2>
-
-          <div id="tablist-2" role="tablist" class="nav-tabs">
-            <button id="heading2-1" role="tab"
-                    aria-controls="tabpanel2-1"
-                    href="#" data-tab="2-1"
-                    class="nav-tab active"
-                    tabindex="0"
-                    aria-selected="true">
-              Здания</button>
-            <button id="heading2-2" role="tab"
-                    aria-controls="tabpanel2-2"
-                    href="#" data-tab="2-2"
-                    class="nav-tab"
-                    tabindex="-1"
-                    aria-selected="false">
-              История</button>
-          </div>
-
-<!--          <div class="tab-content">-->
-            <section id="tabpanel2-1"
-                     role="tabpanel"
-                     data-tab-content="2-1"
-                     class="tab-pane active"
-                     aria-labelledby="heading2-1">
-              <div class="tab-pane__item" tabindex="0">
-                <img src="./src/images/Rectangle_1.png" alt="">
-                <h3>МЕМОРИАЛЬНАЯ КВАРТИРА С.Т. РИХТЕРА</h3>
-                <div class="tab__text">Тул. Большая Бронная, 2/6, 16 этаж, кв. 58</div>
-                <button class="tab__button">Подробнее</button>
-              </div>
-
-              <div class="tab-pane__item" tabindex="0">
-                <img src="./src/images/Rectangle_2.png" alt="">
-                <h3>ЦЭВ «МУСЕЙОН»</h3>
-                <div class="tab__text">Колымажный пер., 6/2, 3 (вход с Малого Знаменского переулка)</div>
-                <button class="tab__button">Подробнее</button>
-              </div>
-
-              <div class="tab-pane__item" tabindex="0">
-                <img src="./src/images/Rectangle_3.png" alt="">
-                <h3>УСАДЬБА ЛОПУХИНЫХ</h3>
-                <div class="tab__text">Малый Знаменский пер., 3/5с4</div>
-                <button class="tab__button">Подробнее</button>
-              </div>
-
-              <div class="tab-pane__item" tabindex="0">
-                <img src="./src/images/Rectangle_4.png" alt="">
-                <h3>УЧЕБНЫЙ МУЗЕЙ</h3>
-                <div class="tab__text">ул. Чаянова, 15</div>
-                <button class="tab__button">Подробнее</button>
-              </div>
-
-              <div class="tab-pane__item" tabindex="0">
-                <img src="./src/images/Rectangle_5.png" alt="">
-                <h3>ОТДЕЛ ЛИЧНЫХ КОЛЛЕКЦИЙ</h3>
-                <div class="tab__text">ул. Волхонка, 10</div>
-                <button class="tab__button">Подробнее</button>
-              </div>
-
-              <div class="tab-pane__item" tabindex="0">
-                <img src="./src/images/Rectangle_6.png" alt="">
-                <h3>ГАЛЕРЕЯ</h3>
-                <div class="tab__text">ул. Волхонка, 14</div>
-                <button class="tab__button">Подробнее</button>
-              </div>
-            </section>
-
-            <section id="tabpanel2-2"
-                     role="tabpanel"
-                     data-tab-content="2-2"
-                     class="tab-pane"
-                     aria-labelledby="heading2-2"
-                     tabindex="-1">
-              <div class="tab-pane__item col-12" tabindex="0">
-                <p>Государственный музей изобразительных искусств имени А.С. Пушкина – одно из крупнейших в России художественных собраний зарубежного искусства с древнейших времен до наших дней.</p>
-                <p>В современной экспозиции представлены обширная учебная коллекция тонированных гипсовых слепков с произведений Античности, Средних веков и эпохи Возрождения, а также собрание подлинных произведений живописи, скульптуры, графики и декоративно-прикладного искусства.</p>
-                <p>В залах первого этажа Главного здания представлены: произведения искусства Древнего Египта, Античности, собрание европейской живописи VIII–XVIII веков; два зала – Итальянский и Греческий дворики – занимают слепки. На втором этаже Главного здания в залах размещены слепки произведений искусства Древней Греции, Рима, Средних веков и Возрождения.</p>
-                <p>В начале 2017 года музей определил новое направление своей деятельности – Пушкинский XXI, – ориентированное на современное российское и западное искусство во всех аспектах – выставочном, образовательном и исследовательском. Таким образом, ГМИИ им. А.С. Пушкина представляет собой открытую, интерактивную сцену, демонстрирующую развитие мировой культуры с древности до наших дней, живое, знакомое с детства пространство для получения знаний и общения.</p>
-                <button class="tab__button read-more-btn">Читать далее</button>
-              </div>
-          </section>
-        </section>
-
-        <section id="broadcasts" tabindex="0">
-          <h2>Онлайн-трансляции</h2>
-          <div class="video">
-            <img src="./src/images/preview.png" tabindex="0" alt="Картинка-заглушка к видеоролику Екатерины Кочетковой '20 коротких историй о современном искусстве'. На изображении семечки подсолничника крупным планом">
-          </div>
-        </section>
-        <section id="excursion" tabindex="0">
-          <h2 role="heading" aria-level="2">Экскурсии и лекции в прямом эфире</h2>
-            <p>С 1 июля вы можете присоединиться к нашим виртуальным мероприятиям — экскурсиям и лекциям для взрослых и детей, оплатив участие на сайте. Встречи будут проходить в прямом эфире на платформе Zoom; предусмотрен формат живого общения с возможностью задавать вопросы экскурсоводу (лектору).
-              Подробнее.</p>
-            <p>Мы будем благодарны за любое пожертвование. Все поступившие средства будут направлены на организацию онлайн-проектов для наших посетителей.</p>
-          </section>
-      </div>
-      </div>
-
-      <div role="contentinfo" aria-label="Footer" class="footer"></div>
-
-      <div class="modal" data-modal="1" tabindex="-1" id="modal"
+        <div class="modal" data-modal="1" tabindex="-1" id="modal"
            role="dialog" aria-modal="true" aria-labelledby="modalHeadingId"
       >
-    <!--<span class="modal__close js-modal-close"></span>-->
+        <!--<span class="modal__close js-modal-close"></span>-->
         <h2 id="modalHeadingId" class="modal__title">Вход</h2>
         <form id="modalForm" action="#" method="post">
-<!--            <label for="login"><b>Введите логин латинскими буквами</b></label>-->
-            <input class="js-login-form" type="text" placeholder="Логин" name="login" required>
-<!--            <label for="psw"><b>Password</b></label>-->
-            <input type="password" placeholder="Пароль" name="psw" required>
+          <!--            <label for="login"><b>Введите логин латинскими буквами</b></label>-->
+          <input class="js-login-form" type="text" placeholder="Логин" name="login" required>
+          <!--            <label for="psw"><b>Password</b></label>-->
+          <input type="password" placeholder="Пароль" name="psw" required>
 
-            <button class="modal__submit js-modalSubmit" type="submit">Вход</button>
+          <button class="modal__submit js-modalSubmit" type="submit">Вход</button>
         </form>
         <button class="modal__close js-modal-close" aria-label="Закрыть">X</button>
       </div>
-
-      <div class="overlay" id="overlay-modal"></div>
     </div>
-    <script type="text/javascript" src="./src/js/roving-focus.js"></script>
-  </body>
+
+    <div role="contentinfo" aria-label="Footer" class="footer"></div>
+
+    <div class="overlay" id="overlay-modal"></div>
+</div>
+<script type="text/javascript" src="./src/js/roving-focus.js"></script>
+</body>
 </html>
