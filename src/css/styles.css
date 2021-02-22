@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 * {
     outline-offset: 4px;
     box-sizing: border-box;
     border: none;
     margin: 0;
     padding: 0;
+    font-weight: 400;
 }
 img {
     width: 100%;
@@ -15,13 +17,11 @@ button {
 }
 body {
     color: #000;
-    font-family: Roboto;
-    background-color: sienna;
+    font-family: 'Roboto', sans-serif;
+    background-color: gainsboro;
 }
 section {
-    min-height: 200px;
-    padding-bottom: 120px;
-    border-bottom: 1px solid #777;
+    padding-bottom: 50px;
 }
 h2 {
     margin-bottom: 40px;
@@ -38,14 +38,25 @@ h4 {
     line-height: 26px;
     margin-bottom: 8px;
 }
+p {
+    margin-bottom: 20px;
+    font-size: 22px;
+    line-height: 25px;
+}
 .modal:focus {
     border: 1px solid royalblue;
 }
-.wrapper {
+.modal__title:focus {
+    color: red;
+    border: 1px solid royalblue;
+}
+.page-wrapper {
     background-color: #fff;
     max-width: 1440px;
     margin: 0 auto;
-    padding: 0 207px 160px;
+}
+.main-wrap {
+    padding: 0 207px 110px;
 }
 
 /* Header */
@@ -175,7 +186,6 @@ h4 {
     line-height: 26px;
     margin-right: 63px;
     color: #000;
-    transition: all .3s ease;
 }
 .nav-tab.active{
     padding: 17px 62px 15px;
@@ -189,21 +199,23 @@ h4 {
 .nav-tabs {
     margin-bottom: 48px;
 }
-.tab-content{
-    font-size: 20px;
-}
+/*.tab-content{*/
+/*    font-size: 20px;*/
+/*}*/
 .tab-pane{
     display: none;
 }
 
 .tab-pane__item {
     width: 30%;
+    margin-bottom: 70px;
 }
 .tab-pane__item img {
     margin-bottom: 24px;
 }
 .tab-pane.active{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
@@ -211,6 +223,11 @@ h4 {
     font-size: 16px;
     line-height: 18px;
 }
+
+#museum .tab__text {
+    margin-top: -8px;
+}
+
 .tab__button {
     margin-top: 24px;
     font-size: 16px;
@@ -228,7 +245,9 @@ h4 {
     background-size: cover;
 }
 
-
+.read-more-btn {
+    margin-top: 48px;
+}
 
 /* Special */
 .v-h {
@@ -254,7 +273,7 @@ h4 {
 .modal {
     /* Скрываем окна  */
     opacity: 0;
-    visibility: hidden;
+    display: none;
     /*  Установаем ширину окна  */
     width: 792px;
     /*  Центрируем и задаем z-index */
@@ -272,7 +291,7 @@ h4 {
     transition: all .3s ease;
 }
 
-.modal button {
+.modal__submit {
     width: 100%;
     height: 65px;
     background: #C7D2E9;
@@ -281,17 +300,18 @@ h4 {
     line-height: 35px;
     transition: all .3s ease;
 }
-.modal button:hover {
+.modal__submit:hover {
     color: white;
     background-color: cornflowerblue;
 }
-
-.modal.active,
-.overlay.active{
+.modal.active {
+    opacity: 1;
+    display: block;
+}
+.overlay.active {
     opacity: 1;
     visibility: visible;
 }
-
 .modal__title {
     font-size: 50px;
     line-height: 58px;
@@ -300,17 +320,17 @@ h4 {
 }
 
 /* Стили для кнопки закрытия */
-.modal__cross {
-    width: 15px;
-    height: 15px;
+.modal__close {
+    width: 40px;
+    height: 40px;
     position: absolute;
     top: 20px;
     right: 20px;
-    fill: #444;
-    cursor: pointer;
+    font-size: 30px;
 }
 
 .footer {
+    height: 386px;
     background: #F1F1F1;
 }
 
@@ -328,4 +348,12 @@ form input {
     line-height: 35px;
     padding: 14px 20px 16px;
     color: #555;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+.video {
+    margin-bottom: 70px;
 }
