@@ -1,0 +1,49 @@
+/* @import url('https://static3.mos.ru/upload/share/fonts/fonts.css'); */
+
+#r {
+    display: none;
+}
+
+html{
+    zoom: 8;
+}
+
+*,
+*:before,
+*:after {
+    font-family: 'Golos Text' !important;
+}
+
+body{
+    background: black;
+}
+
+#root {
+    padding: 48px;
+    height: 1188px;
+    width: 840px;
+    margin: 0 auto;
+    background: #fff;
+}
+
+.production-calendar-div,
+.production-calendar-download {
+    display: none;
+}
+
+h1{
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 48px;
+}
+
+.production-calendar__month__title{
+    font-size: 18px;
+    color: #c22;
+    font-weight: 500;
+}
+
+.production-calendar .production-calendar__info__item{
+    border: 1px solid #c22;
+}

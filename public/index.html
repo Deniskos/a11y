@@ -1,34 +1,636 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+<!-- saved from url=(0022)http://localhost:3000/ -->
+<script type="text/javascript" src="./dom2image.js"></script>
+<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
     <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="manifest" href="http://localhost:3000/manifest.json">
+    <link rel="shortcut icon" href="http://localhost:3000/favicon.ico">
+
     <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
+      Notice the use of  in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <title>Календарь</title>
+
+  <style type="text/css">body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  color: #333;
+}
+</style><style type="text/css">.tooltip-container {
+  background-color: white;
+  border-radius: 3px;
+  border: 1px solid silver;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  margin: 0.4rem;
+  padding: 0.4rem;
+  -webkit-transition: opacity 0.3s;
+  -o-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  z-index: 2147483647;
+}
+
+.tooltip-arrow {
+  height: 1rem;
+  position: absolute;
+  width: 1rem;
+}
+
+.tooltip-arrow::before {
+  border-style: solid;
+  content: '';
+  display: block;
+  height: 0;
+  margin: auto;
+  width: 0;
+}
+
+.tooltip-arrow::after {
+  border-style: solid;
+  content: '';
+  display: block;
+  height: 0;
+  margin: auto;
+  position: absolute;
+  width: 0;
+}
+
+.tooltip-arrow[data-placement*='bottom'] {
+  height: 1rem;
+  left: 0;
+  margin-top: -0.4rem;
+  top: 0;
+  width: 1rem;
+}
+
+.tooltip-arrow[data-placement*='bottom']::before {
+  border-color: transparent transparent silver transparent;
+  border-width: 0 0.5rem 0.4rem 0.5rem;
+  position: absolute;
+  top: -1px;
+}
+
+.tooltip-arrow[data-placement*='bottom']::after {
+  border-color: transparent transparent white transparent;
+  border-width: 0 0.5rem 0.4rem 0.5rem;
+}
+
+.tooltip-arrow[data-placement*='top'] {
+  bottom: 0;
+  height: 1rem;
+  left: 0;
+  margin-bottom: -1rem;
+  width: 1rem;
+}
+
+.tooltip-arrow[data-placement*='top']::before {
+  border-color: silver transparent transparent transparent;
+  border-width: 0.4rem 0.5rem 0 0.5rem;
+  position: absolute;
+  top: 1px;
+}
+
+.tooltip-arrow[data-placement*='top']::after {
+  border-color: white transparent transparent transparent;
+  border-width: 0.4rem 0.5rem 0 0.5rem;
+}
+
+.tooltip-arrow[data-placement*='right'] {
+  height: 1rem;
+  left: 0;
+  margin-left: -0.7rem;
+  width: 1rem;
+}
+
+.tooltip-arrow[data-placement*='right']::before {
+  border-color: transparent silver transparent transparent;
+  border-width: 0.5rem 0.4rem 0.5rem 0;
+}
+
+.tooltip-arrow[data-placement*='right']::after {
+  border-color: transparent white transparent transparent;
+  border-width: 0.5rem 0.4rem 0.5rem 0;
+  left: 6px;
+  top: 0;
+}
+
+.tooltip-arrow[data-placement*='left'] {
+  height: 1rem;
+  margin-right: -0.7rem;
+  right: 0;
+  width: 1rem;
+}
+
+.tooltip-arrow[data-placement*='left']::before {
+  border-color: transparent transparent transparent silver;
+  border-width: 0.5rem 0 0.5rem 0.4em;
+}
+
+.tooltip-arrow[data-placement*='left']::after {
+  border-color: transparent transparent transparent white;
+  border-width: 0.5rem 0 0.5rem 0.4em;
+  left: 3px;
+  top: 0;
+}
+</style><style type="text/css">@import url(https://www.mos.ru/upload/share/fonts/fonts.css);</style><style type="text/css">.production-calendar button {
+  background: inherit;
+  border: inherit;
+}
+
+.widget-production-calendar {
+  overflow: hidden;
+  position: relative;
+}
+
+.production-calendar-wrapper {}
+
+.production-calendar {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: stretch;
+  justify-content: stretch;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.production-calendar__month {
+  width: calc((100% / 3 - (32px * 2 / 3)) - 1px);
+  margin-right: 32px;
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.production-calendar__month:nth-child(3n+3) {
+  margin-right: 0;
+}
+
+.production-calendar__month__title {
+  color: #CC2222;
+  font-family: 'Golos Text', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 16px;
+}
+
+.production-calendar__month__weekdays {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.production-calendar__month__weekdays>* {
+  color: #9EA4AC;
+  font-family: 'Golos Text', sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+}
+
+.production-calendar__month__weekdays>* {
+  width: calc(100% / 7);
+  min-width: calc(100% / 7);
+}
+
+.production-calendar__month__days {
+  width: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  pointer-events: none;
+  position: relative;
+  z-index: 2;
+}
+
+.production-calendar__month__days>* {
+  width: calc(100% / 7);
+  min-width: calc(100% / 7);
+  color: #0C1014;
+  font-family: 'Golos Text', sans-serif;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.production-calendar__month__days>*:nth-child(7n+6),
+.production-calendar__month__days>*:nth-child(7n+7) {
+  color: #CC2222;
+}
+
+.production-calendar__day_cut {
+  color: #2589DE !important;
+}
+
+button.production-calendar__days-group {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 21px;
+  border: 1px solid #CC2222;
+  border-radius: 10px;
+}
+
+button.production-calendar__day_path {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 21px;
+  border-top: 1px solid #CC2222;
+  border-bottom: 1px solid #CC2222;
+  position: relative;
+}
+
+.production-calendar__day_path {
+  cursor: pointer;
+}
+
+
+.production-calendar__info:nth-of-type(1) {
+  border-radius: 10px 0 0 10px;
+  border-left: 1px solid #CC2222;
+}
+
+.production-calendar__info:nth-of-type(5) {
+  border-radius: 0 10px 10px 0;
+  border-right: 1px solid #CC2222;
+}
+
+.production-calendar__info:nth-of-type(6) {
+  border-radius: 10px 0 0 10px;
+  border-left: 1px solid #CC2222;
+}
+
+.production-calendar__info:nth-of-type(8) {
+  border-radius: 0 10px 10px 0;
+  border-right: 1px solid #CC2222;
+}
+
+.production-calendar__info.production-calendar__info_hover {
+  background: #FFF2F2;
+}
+
+.production-calendar-popover-wrapper {
+  position: absolute;
+}
+
+.production-calendar-popover {
+  background: #fff;
+  padding: 12px 24px;
+  -webkit-box-shadow: 0 3px 4px 0 rgba(12, 16, 20, 0.1);
+  box-shadow: 0 3px 4px 0 rgba(12, 16, 20, 0.1);
+  outline: none;
+  border: 1px solid #D6DADE;
+  z-index: 3;
+}
+
+.production-calendar-popover__arrow {
+  color: #fff;
+  fill: #fff;
+}
+
+.production-calendar-popover__arrow .stroke {
+
+  fill: #D6DADE;
+}
+
+.production-calendar-popover__arrow .fill {
+  fill: #ffffff;
+}
+
+.production-calendar-popover__content {
+  color: #1F0303;
+  font-family: "PT Sans";
+  font-size: 14px;
+  line-height: 18px;
+  max-width: 256px;
+}
+
+
+.production-calendar .production-calendar__info {
+  position: absolute;
+  width: 100%;
+  top: 63px;
+  left: 0;
+  z-index: 1;
+}
+
+.production-calendar .production-calendar__info__item {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 21px;
+  width: calc(100% / 7);
+  min-width: calc(100% / 7);
+  border: 1px solid #CC2222;
+  border-radius: 10px;
+  position: absolute;
+}
+
+.production-calendar__info__item>div>div {
+  background: red;
+}
+
+.production-calendar .production-calendar__info__item_hover {
+  background: rgba(204, 34, 34, .1);
+  cursor: pointer;
+}
+
+@media (max-width: 1365px) {
+  .production-calendar__month {
+    width: calc((100% / 3 - (24px * 2 / 3)) - 1px);
+    margin-right: 24px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 1279px) {
+  .production-calendar {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    justify-content: flex-start;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .production-calendar__month {
+    width: 215px;
+    min-width: 215px;
+    margin-right: 16px;
+    margin-bottom: 0;
+    padding: 12px;
+    border: 1px solid #D6DADE;
+    border-radius: 4px;
+  }
+
+  .production-calendar__month:nth-child(3n+3) {
+    margin-right: 16px;
+  }
+
+  .production-calendar .production-calendar__info {
+    width: calc((100% - 12px * 2) - 1px);
+    top: 75px;
+    left: 12px;
+  }
+}
+
+.tooltip-container {
+  padding: 12px 16px;
+  color: #1F0303;
+  font-family: "PT Sans";
+  font-size: 14px;
+  line-height: 18px;
+  -webkit-box-shadow: 0 3px 4px 0 rgba(12, 16, 20, 0.1);
+  box-shadow: 0 3px 4px 0 rgba(12, 16, 20, 0.1);
+  border: 1px solid #D6DADE;
+  border-radius: 2px;
+  max-width: 256px;
+  text-align: left;
+  z-index: 3;
+}
+
+
+.tooltip-arrow[data-placement*='top']::before {
+  border-color: #D6DADE transparent transparent transparent;
+}
+
+.production-calendar-legend {
+  margin-bottom: 16px;
+}
+
+.production-calendar-legend__item {
+  margin-right: 32px;
+  margin-bottom: 16px;
+  color: #9EA4AC;
+  font-family: 'Moscow Sans';
+  font-size: 14px;
+  line-height: 18px;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.production-calendar-legend__item:last-child {
+  margin-right: 0;
+}
+
+.production-calendar-legend__item span {
+  color: #0C1014;
+  font-family: 'Golos Text', sans-serif;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center
+}
+
+
+.production-calendar-legend__item .l-span {
+  color: #0C1014;
+  border: 1px solid #CC2222;
+  height: 21px;
+  width: 66px;
+  border-radius: 10px;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.production-calendar-legend__item .span {
+  margin-right: 8px;
+}
+
+.production-calendar-legend__item .normal-span {
+  color: #0C1014;
+}
+
+.production-calendar-legend__item .after-span {
+  margin-left: 8px;
+  color: #9EA4AC;
+  font-family: 'Moscow Sans';
+  font-size: 14px;
+  line-height: 18px;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.production-calendar-legend__item .after-span-short {
+  margin-left: 4px;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+
+.production-calendar-legend__item .red-span {
+  color: #CC2222;
+}
+
+.production-calendar-legend__item .blue-span {
+  color: #2589DE;
+}
+
+.production-calendar-div {
+  height: 1px;
+  width: 100%;
+  background-color: #D6DADE;
+  margin-bottom: 24px;
+}
+
+.production-calendar-download {
+  color: #2589DE;
+  font-family: 'Moscow Sans';
+  font-size: 16px;
+  line-height: 24px;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  text-decoration: none;
+}
+
+.production-calendar-download__pdf-icon {
+  margin-left: 8px;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+
+.production-calendar__info__item_star {
+  border: 0 !important;
+  background: none !important;
+}
+
+.icon-star {
+  width: 100%;
+  min-width: 100%;
+  left: 0%;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: relative;
+}
+
+
+.icon-star img {
+  width: 24px;
+  height: auto;
+  top: -2px;
+  left: 0;
+  right: 0;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: relative;
+}
+
+
+
+#drawing_canvas {
+  position: absolute;
+  margin: auto;
+  width: 512px;
+  height: 350px;
+  left: calc((100% - 256px - 50%) - 1px);
+  top: -175px;
+  z-index: 1;
+  pointer-events: none;
+  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1.0)), color-stop(80%, rgba(0, 0, 0, 1.0)), to(rgba(0, 0, 0, 0)));
+  -webkit-mask-image: -webkit-linear-gradient(rgba(0, 0, 0, 1.0) 0%, rgba(0, 0, 0, 1.0) 80%, rgba(0, 0, 0, 0) 100%);
+  mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1.0)), color-stop(80%, rgba(0, 0, 0, 1.0)), to(rgba(0, 0, 0, 0)));
+  mask-image: linear-gradient(rgba(0, 0, 0, 1.0) 0%, rgba(0, 0, 0, 1.0) 80%, rgba(0, 0, 0, 0) 100%);
+}
+
+.production-calendar-wrapper_ie .production-calendar__month__weekdays>* {
+  width: calc((100% / 7) - 1px);
+  min-width: calc((100% / 7) - 1px);
+}
+
+.production-calendar-wrapper_ie .production-calendar__month__days>* {
+  width: calc((100% / 7) - 1px);
+  min-width: calc((100% / 7) - 1px);
+}
+
+.production-calendar-wrapper_ie .production-calendar .production-calendar__info__item {
+  width: calc((100% / 7) - 1px);
+  min-width: calc((100% / 7) - 1px);
+}
+
+.production-calendar-wrapper_ie .icon-star img {
+  left: -6px;
+}
+</style>
+    <link href="./style.css" rel="stylesheet">
+    <script async="" src="./files/easyXDM-2.4.17.1.min.js"></script>
+
+</head>
+  <body><audio class="audio-for-speech" src=""></audio><div class="translate-tooltip-mtz hidden">
+                    <div class="header">
+                        <div class="header-controls">
+                            <span class="settings"></span>
+                        </div>
+                    </div>
+                    <div class="translated-text">
+                        <div class="words"></div>
+                        <div class="sentences"></div>
+                    </div>
+                </div><span class="translate-button-mtz hidden"></span>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="r"></div>
+    <div id="root"><div class="widget-production-calendar"><h1>Календарь 2022</h1><div class="production-calendar-wrapper"><div class="production-calendar"><div class="production-calendar__month"><div class="production-calendar__month__title">Январь</div><div class="production-calendar__month__weekdays"><div>пн</div><div>вт</div><div>ср</div><div>чт</div><div>пт</div><div>сб</div><div>вс</div></div><div class="production-calendar__info"><div class="production-calendar__info__item" style="left: calc(71.4286%); top: 0px; width: calc(28.5714%); opacity: 1;"><div class="trigger"></div></div><div class="production-calendar__info__item" style="left: calc(0%); top: 26px; width: calc(100%);"></div></div><div class="production-calendar__month__days"><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__day">1</div><div class="production-calendar__day">2</div><div class="production-calendar__day">3</div><div class="production-calendar__day">4</div><div class="production-calendar__day">5</div><div class="production-calendar__day">6</div><div class="production-calendar__day">7</div><div class="production-calendar__day">8</div><div class="production-calendar__day">9</div><div class="production-calendar__day">10</div><div class="production-calendar__day">11</div><div class="production-calendar__day">12</div><div class="production-calendar__day">13</div><div class="production-calendar__day">14</div><div class="production-calendar__day">15</div><div class="production-calendar__day">16</div><div class="production-calendar__day">17</div><div class="production-calendar__day">18</div><div class="production-calendar__day">19</div><div class="production-calendar__day">20</div><div class="production-calendar__day">21</div><div class="production-calendar__day">22</div><div class="production-calendar__day">23</div><div class="production-calendar__day">24</div><div class="production-calendar__day">25</div><div class="production-calendar__day">26</div><div class="production-calendar__day">27</div><div class="production-calendar__day">28</div><div class="production-calendar__day">29</div><div class="production-calendar__day">30</div><div class="production-calendar__day">31</div></div></div><div class="production-calendar__month"><div class="production-calendar__month__title">Февраль</div><div class="production-calendar__month__weekdays"><div>пн</div><div>вт</div><div>ср</div><div>чт</div><div>пт</div><div>сб</div><div>вс</div></div><div class="production-calendar__info"><div class="production-calendar__info__item" style="left: calc(28.5714%); top: 78px; width: calc(14.2857%); opacity: 1;"><div class="trigger"></div></div><div class="production-calendar__info__item" style="left: calc(14.2857%); top: 78px; width: calc(14.2857%); opacity: 0;"><div class="trigger"></div></div></div><div class="production-calendar__month__days"><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__day">1</div><div class="production-calendar__day">2</div><div class="production-calendar__day">3</div><div class="production-calendar__day">4</div><div class="production-calendar__day">5</div><div class="production-calendar__day">6</div><div class="production-calendar__day">7</div><div class="production-calendar__day">8</div><div class="production-calendar__day">9</div><div class="production-calendar__day">10</div><div class="production-calendar__day">11</div><div class="production-calendar__day">12</div><div class="production-calendar__day">13</div><div class="production-calendar__day">14</div><div class="production-calendar__day">15</div><div class="production-calendar__day">16</div><div class="production-calendar__day">17</div><div class="production-calendar__day">18</div><div class="production-calendar__day">19</div><div class="production-calendar__day">20</div><div class="production-calendar__day">21</div><div class="production-calendar__day production-calendar__day_cut">22</div><div class="production-calendar__day">23</div><div class="production-calendar__day">24</div><div class="production-calendar__day">25</div><div class="production-calendar__day">26</div><div class="production-calendar__day">27</div><div class="production-calendar__day">28</div></div></div><div class="production-calendar__month"><div class="production-calendar__month__title">Март</div><div class="production-calendar__month__weekdays"><div>пн</div><div>вт</div><div>ср</div><div>чт</div><div>пт</div><div>сб</div><div>вс</div></div><div class="production-calendar__info"><div class="production-calendar__info__item" style="left: calc(85.7143%); top: 0px; width: calc(14.2857%); opacity: 1;"><div class="trigger"></div></div><div class="production-calendar__info__item" style="left: calc(0%); top: 26px; width: calc(28.5714%);"></div><div class="production-calendar__info__item" style="left: calc(71.4286%); top: 0px; width: calc(14.2857%); opacity: 0;"><div class="trigger"></div></div></div><div class="production-calendar__month__days"><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__day">1</div><div class="production-calendar__day">2</div><div class="production-calendar__day">3</div><div class="production-calendar__day">4</div><div class="production-calendar__day production-calendar__day_cut">5</div><div class="production-calendar__day">6</div><div class="production-calendar__day">7</div><div class="production-calendar__day">8</div><div class="production-calendar__day">9</div><div class="production-calendar__day">10</div><div class="production-calendar__day">11</div><div class="production-calendar__day">12</div><div class="production-calendar__day">13</div><div class="production-calendar__day">14</div><div class="production-calendar__day">15</div><div class="production-calendar__day">16</div><div class="production-calendar__day">17</div><div class="production-calendar__day">18</div><div class="production-calendar__day">19</div><div class="production-calendar__day">20</div><div class="production-calendar__day">21</div><div class="production-calendar__day">22</div><div class="production-calendar__day">23</div><div class="production-calendar__day">24</div><div class="production-calendar__day">25</div><div class="production-calendar__day">26</div><div class="production-calendar__day">27</div><div class="production-calendar__day">28</div><div class="production-calendar__day">29</div><div class="production-calendar__day">30</div><div class="production-calendar__day">31</div></div></div><div class="production-calendar__month"><div class="production-calendar__month__title">Апрель</div><div class="production-calendar__month__weekdays"><div>пн</div><div>вт</div><div>ср</div><div>чт</div><div>пт</div><div>сб</div><div>вс</div></div><div class="production-calendar__info"></div><div class="production-calendar__month__days"><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__day">1</div><div class="production-calendar__day">2</div><div class="production-calendar__day">3</div><div class="production-calendar__day">4</div><div class="production-calendar__day">5</div><div class="production-calendar__day">6</div><div class="production-calendar__day">7</div><div class="production-calendar__day">8</div><div class="production-calendar__day">9</div><div class="production-calendar__day">10</div><div class="production-calendar__day">11</div><div class="production-calendar__day">12</div><div class="production-calendar__day">13</div><div class="production-calendar__day">14</div><div class="production-calendar__day">15</div><div class="production-calendar__day">16</div><div class="production-calendar__day">17</div><div class="production-calendar__day">18</div><div class="production-calendar__day">19</div><div class="production-calendar__day">20</div><div class="production-calendar__day">21</div><div class="production-calendar__day">22</div><div class="production-calendar__day">23</div><div class="production-calendar__day">24</div><div class="production-calendar__day">25</div><div class="production-calendar__day">26</div><div class="production-calendar__day">27</div><div class="production-calendar__day">28</div><div class="production-calendar__day">29</div><div class="production-calendar__day">30</div></div></div><div class="production-calendar__month"><div class="production-calendar__month__title">Май</div><div class="production-calendar__month__weekdays"><div>пн</div><div>вт</div><div>ср</div><div>чт</div><div>пт</div><div>сб</div><div>вс</div></div><div class="production-calendar__info"><div class="production-calendar__info__item" style="left: calc(85.7143%); top: 0px; width: calc(14.2857%); opacity: 1;"><div class="trigger"></div></div><div class="production-calendar__info__item" style="left: calc(0%); top: 26px; width: calc(28.5714%);"></div><div class="production-calendar__info__item" style="left: calc(0%); top: 52px; width: calc(28.5714%); opacity: 1;"><div class="trigger"></div></div></div><div class="production-calendar__month__days"><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__day">1</div><div class="production-calendar__day">2</div><div class="production-calendar__day">3</div><div class="production-calendar__day">4</div><div class="production-calendar__day">5</div><div class="production-calendar__day">6</div><div class="production-calendar__day">7</div><div class="production-calendar__day">8</div><div class="production-calendar__day">9</div><div class="production-calendar__day">10</div><div class="production-calendar__day">11</div><div class="production-calendar__day">12</div><div class="production-calendar__day">13</div><div class="production-calendar__day">14</div><div class="production-calendar__day">15</div><div class="production-calendar__day">16</div><div class="production-calendar__day">17</div><div class="production-calendar__day">18</div><div class="production-calendar__day">19</div><div class="production-calendar__day">20</div><div class="production-calendar__day">21</div><div class="production-calendar__day">22</div><div class="production-calendar__day">23</div><div class="production-calendar__day">24</div><div class="production-calendar__day">25</div><div class="production-calendar__day">26</div><div class="production-calendar__day">27</div><div class="production-calendar__day">28</div><div class="production-calendar__day">29</div><div class="production-calendar__day">30</div><div class="production-calendar__day">31</div></div></div><div class="production-calendar__month"><div class="production-calendar__month__title">Июнь</div><div class="production-calendar__month__weekdays"><div>пн</div><div>вт</div><div>ср</div><div>чт</div><div>пт</div><div>сб</div><div>вс</div></div><div class="production-calendar__info"><div class="production-calendar__info__item" style="left: calc(85.7143%); top: 26px; width: calc(14.2857%); opacity: 1;"><div class="trigger"></div></div><div class="production-calendar__info__item" style="left: calc(0%); top: 52px; width: calc(14.2857%);"></div></div><div class="production-calendar__month__days"><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__day">1</div><div class="production-calendar__day">2</div><div class="production-calendar__day">3</div><div class="production-calendar__day">4</div><div class="production-calendar__day">5</div><div class="production-calendar__day">6</div><div class="production-calendar__day">7</div><div class="production-calendar__day">8</div><div class="production-calendar__day">9</div><div class="production-calendar__day">10</div><div class="production-calendar__day">11</div><div class="production-calendar__day">12</div><div class="production-calendar__day">13</div><div class="production-calendar__day">14</div><div class="production-calendar__day">15</div><div class="production-calendar__day">16</div><div class="production-calendar__day">17</div><div class="production-calendar__day">18</div><div class="production-calendar__day">19</div><div class="production-calendar__day">20</div><div class="production-calendar__day">21</div><div class="production-calendar__day">22</div><div class="production-calendar__day">23</div><div class="production-calendar__day">24</div><div class="production-calendar__day">25</div><div class="production-calendar__day">26</div><div class="production-calendar__day">27</div><div class="production-calendar__day">28</div><div class="production-calendar__day">29</div><div class="production-calendar__day">30</div></div></div><div class="production-calendar__month"><div class="production-calendar__month__title">Июль</div><div class="production-calendar__month__weekdays"><div>пн</div><div>вт</div><div>ср</div><div>чт</div><div>пт</div><div>сб</div><div>вс</div></div><div class="production-calendar__info"></div><div class="production-calendar__month__days"><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__day">1</div><div class="production-calendar__day">2</div><div class="production-calendar__day">3</div><div class="production-calendar__day">4</div><div class="production-calendar__day">5</div><div class="production-calendar__day">6</div><div class="production-calendar__day">7</div><div class="production-calendar__day">8</div><div class="production-calendar__day">9</div><div class="production-calendar__day">10</div><div class="production-calendar__day">11</div><div class="production-calendar__day">12</div><div class="production-calendar__day">13</div><div class="production-calendar__day">14</div><div class="production-calendar__day">15</div><div class="production-calendar__day">16</div><div class="production-calendar__day">17</div><div class="production-calendar__day">18</div><div class="production-calendar__day">19</div><div class="production-calendar__day">20</div><div class="production-calendar__day">21</div><div class="production-calendar__day">22</div><div class="production-calendar__day">23</div><div class="production-calendar__day">24</div><div class="production-calendar__day">25</div><div class="production-calendar__day">26</div><div class="production-calendar__day">27</div><div class="production-calendar__day">28</div><div class="production-calendar__day">29</div><div class="production-calendar__day">30</div><div class="production-calendar__day">31</div></div></div><div class="production-calendar__month"><div class="production-calendar__month__title">Август</div><div class="production-calendar__month__weekdays"><div>пн</div><div>вт</div><div>ср</div><div>чт</div><div>пт</div><div>сб</div><div>вс</div></div><div class="production-calendar__info"></div><div class="production-calendar__month__days"><div class="production-calendar__day">1</div><div class="production-calendar__day">2</div><div class="production-calendar__day">3</div><div class="production-calendar__day">4</div><div class="production-calendar__day">5</div><div class="production-calendar__day">6</div><div class="production-calendar__day">7</div><div class="production-calendar__day">8</div><div class="production-calendar__day">9</div><div class="production-calendar__day">10</div><div class="production-calendar__day">11</div><div class="production-calendar__day">12</div><div class="production-calendar__day">13</div><div class="production-calendar__day">14</div><div class="production-calendar__day">15</div><div class="production-calendar__day">16</div><div class="production-calendar__day">17</div><div class="production-calendar__day">18</div><div class="production-calendar__day">19</div><div class="production-calendar__day">20</div><div class="production-calendar__day">21</div><div class="production-calendar__day">22</div><div class="production-calendar__day">23</div><div class="production-calendar__day">24</div><div class="production-calendar__day">25</div><div class="production-calendar__day">26</div><div class="production-calendar__day">27</div><div class="production-calendar__day">28</div><div class="production-calendar__day">29</div><div class="production-calendar__day">30</div><div class="production-calendar__day">31</div></div></div><div class="production-calendar__month"><div class="production-calendar__month__title">Сентябрь</div><div class="production-calendar__month__weekdays"><div>пн</div><div>вт</div><div>ср</div><div>чт</div><div>пт</div><div>сб</div><div>вс</div></div><div class="production-calendar__info"><div class="production-calendar__info__item production-calendar__info__item_star" style="left: calc(71.4286%); top: 0px; width: calc(14.2857%);"><div class="trigger"></div><div class="icon-star"><img src="./files/Star-1-1.cc35c08a.svg"></div><canvas id="drawing_canvas" width="512" height="350"></canvas></div></div><div class="production-calendar__month__days"><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__day">1</div><div class="production-calendar__day">2</div><div class="production-calendar__day">3</div><div class="production-calendar__day">4</div><div class="production-calendar__day">5</div><div class="production-calendar__day">6</div><div class="production-calendar__day">7</div><div class="production-calendar__day">8</div><div class="production-calendar__day">9</div><div class="production-calendar__day">10</div><div class="production-calendar__day">11</div><div class="production-calendar__day">12</div><div class="production-calendar__day">13</div><div class="production-calendar__day">14</div><div class="production-calendar__day">15</div><div class="production-calendar__day">16</div><div class="production-calendar__day">17</div><div class="production-calendar__day">18</div><div class="production-calendar__day">19</div><div class="production-calendar__day">20</div><div class="production-calendar__day">21</div><div class="production-calendar__day">22</div><div class="production-calendar__day">23</div><div class="production-calendar__day">24</div><div class="production-calendar__day">25</div><div class="production-calendar__day">26</div><div class="production-calendar__day">27</div><div class="production-calendar__day">28</div><div class="production-calendar__day">29</div><div class="production-calendar__day">30</div></div></div><div class="production-calendar__month"><div class="production-calendar__month__title">Октябрь</div><div class="production-calendar__month__weekdays"><div>пн</div><div>вт</div><div>ср</div><div>чт</div><div>пт</div><div>сб</div><div>вс</div></div><div class="production-calendar__info"></div><div class="production-calendar__month__days"><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__day">1</div><div class="production-calendar__day">2</div><div class="production-calendar__day">3</div><div class="production-calendar__day">4</div><div class="production-calendar__day">5</div><div class="production-calendar__day">6</div><div class="production-calendar__day">7</div><div class="production-calendar__day">8</div><div class="production-calendar__day">9</div><div class="production-calendar__day">10</div><div class="production-calendar__day">11</div><div class="production-calendar__day">12</div><div class="production-calendar__day">13</div><div class="production-calendar__day">14</div><div class="production-calendar__day">15</div><div class="production-calendar__day">16</div><div class="production-calendar__day">17</div><div class="production-calendar__day">18</div><div class="production-calendar__day">19</div><div class="production-calendar__day">20</div><div class="production-calendar__day">21</div><div class="production-calendar__day">22</div><div class="production-calendar__day">23</div><div class="production-calendar__day">24</div><div class="production-calendar__day">25</div><div class="production-calendar__day">26</div><div class="production-calendar__day">27</div><div class="production-calendar__day">28</div><div class="production-calendar__day">29</div><div class="production-calendar__day">30</div><div class="production-calendar__day">31</div></div></div><div class="production-calendar__month"><div class="production-calendar__month__title">Ноябрь</div><div class="production-calendar__month__weekdays"><div>пн</div><div>вт</div><div>ср</div><div>чт</div><div>пт</div><div>сб</div><div>вс</div></div><div class="production-calendar__info"><div class="production-calendar__info__item" style="left: calc(42.8571%); top: 0px; width: calc(14.2857%); opacity: 0;"><div class="trigger"></div></div><div class="production-calendar__info__item" style="left: calc(57.1429%); top: 0px; width: calc(42.8571%); opacity: 1;"><div class="trigger"></div></div></div><div class="production-calendar__month__days"><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__day">1</div><div class="production-calendar__day">2</div><div class="production-calendar__day production-calendar__day_cut">3</div><div class="production-calendar__day">4</div><div class="production-calendar__day">5</div><div class="production-calendar__day">6</div><div class="production-calendar__day">7</div><div class="production-calendar__day">8</div><div class="production-calendar__day">9</div><div class="production-calendar__day">10</div><div class="production-calendar__day">11</div><div class="production-calendar__day">12</div><div class="production-calendar__day">13</div><div class="production-calendar__day">14</div><div class="production-calendar__day">15</div><div class="production-calendar__day">16</div><div class="production-calendar__day">17</div><div class="production-calendar__day">18</div><div class="production-calendar__day">19</div><div class="production-calendar__day">20</div><div class="production-calendar__day">21</div><div class="production-calendar__day">22</div><div class="production-calendar__day">23</div><div class="production-calendar__day">24</div><div class="production-calendar__day">25</div><div class="production-calendar__day">26</div><div class="production-calendar__day">27</div><div class="production-calendar__day">28</div><div class="production-calendar__day">29</div><div class="production-calendar__day">30</div></div></div><div class="production-calendar__month"><div class="production-calendar__month__title">Декабрь</div><div class="production-calendar__month__weekdays"><div>пн</div><div>вт</div><div>ср</div><div>чт</div><div>пт</div><div>сб</div><div>вс</div></div><div class="production-calendar__info"></div><div class="production-calendar__month__days"><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__dump">&nbsp;</div><div class="production-calendar__day">1</div><div class="production-calendar__day">2</div><div class="production-calendar__day">3</div><div class="production-calendar__day">4</div><div class="production-calendar__day">5</div><div class="production-calendar__day">6</div><div class="production-calendar__day">7</div><div class="production-calendar__day">8</div><div class="production-calendar__day">9</div><div class="production-calendar__day">10</div><div class="production-calendar__day">11</div><div class="production-calendar__day">12</div><div class="production-calendar__day">13</div><div class="production-calendar__day">14</div><div class="production-calendar__day">15</div><div class="production-calendar__day">16</div><div class="production-calendar__day">17</div><div class="production-calendar__day">18</div><div class="production-calendar__day">19</div><div class="production-calendar__day">20</div><div class="production-calendar__day">21</div><div class="production-calendar__day">22</div><div class="production-calendar__day">23</div><div class="production-calendar__day">24</div><div class="production-calendar__day">25</div><div class="production-calendar__day">26</div><div class="production-calendar__day">27</div><div class="production-calendar__day">28</div><div class="production-calendar__day">29</div><div class="production-calendar__day">30</div><div class="production-calendar__day">31</div></div></div></div><div class="production-calendar-legend"><div class="production-calendar-legend__item"><div class="normal-span">1</div><div class="after-span">—<div class="after-span-short"></div>рабочие<div class="after-span-short"></div>дни</div></div><div class="production-calendar-legend__item"><div class="red-span">6</div><div class="after-span">—<div class="after-span-short"></div>выходные</div></div><div class="production-calendar-legend__item"><div class="l-span"><div class="span">2</div><div class="span">3</div><div class="red-span">4</div></div><div class="after-span">—<div class="after-span-short"></div>праздничные и присоединенные к&nbsp;ним дни</div></div><div class="production-calendar-legend__item"><div class="blue-span">2</div><div class="after-span">—<div class="after-span-short"></div>дни,<div class="after-span-short"></div>сокращенные<div class="after-span-short"></div>на<div class="after-span-short"></div>один<div class="after-span-short"></div>час</div></div></div><div class="production-calendar-div"></div></div></div></div>
+
+
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -39,5 +641,48 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
-</html>
+
+
+
+<!-- Yandex.Metrika counter --> <script type="text/javascript" async="" src="./files/watch.js"></script><script type="text/javascript"> (function (d, w, c) {(w[c] = w[c] || []).push(function () {try {w.yaCounter32628510 = new Ya.Metrika({id: 32628510, clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true, trackHash: true }); } catch (e) {} }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () {n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") {d.addEventListener("DOMContentLoaded", f, false); } else {f(); } })(document, window, "yandex_metrika_callbacks");</script> <noscript> <div><img src="./files/32628510" style="position:absolute; left:-9999px;" alt=""></div> </noscript><!-- /Yandex.Metrika counter -->
+
+<script src="./files/jquery.min.js"></script>
+
+<script type="text/javascript">
+  var MPGU = {
+      controller: { },
+      personEventCollector: {
+          "on": true,
+          "debug": true,
+          "code": "MOSRU",
+          "xdm": {
+              "init": "https://metrika.mos.ru/static/xdm/index.html",
+              "script": "https://metrika.mos.ru/static/js/easyXDM-2.4.17.1.min.js",
+              "server": "https://metrika.mos.ru/hitcounter"
+          },
+          "interval": 1000
+      }
+  };
+  var waitJqueryLoadApieatlasCallback = [];
+</script>
+<script type="text/javascript" src="./files/personEventCollector.js"></script>
+
+
+
+  <script type="text/javascript" src="./files/bundle.js"></script>
+
+<iframe name="easyXDM_pecXDM_pec-channel-mpgu_provider" id="easyXDM_pecXDM_pec-channel-mpgu_provider" src="./files/index.html" frameborder="0" style="position: absolute; top: -2000px; left: 0px;"></iframe>
+
+  <script>
+      domtoimage.toPng(document.getElementById('root'))
+          .then(function (dataUrl) {
+              var img = new Image();
+              img.src = dataUrl;
+              document.body.appendChild(img); // добавляет картинку внизу страницы.
+          })
+          .catch(function (error) {
+              console.error('oops, something went wrong!', error);
+              // локально может не работать (file:// - такой протокол не примет), нужно залить на любой сервер или поднять сервер локально
+          });
+  </script>
+</body></html>
